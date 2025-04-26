@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#game-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #90EE90;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pen-container {
+    position: relative;
+    width: min(80vw, 80vh);
+    height: min(80vw, 80vh);
+}
+
+.character {
+    position: absolute;
+    transition: transform 0.1s ease-out;
+}
+
+#dog {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #8B4513;
+    transform-origin: 50% 50%;
+    z-index: 2;
+}
+
+#sheep {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid #333;
+    z-index: 2;
+}
+
+/* Fence styles */
+.fence {
+    position: absolute;
+    background-color: #8B4513;
+    z-index: 1;
+}
+
+.fence-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+
+.fence-left {
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+}
+
+.fence-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+
+.fence-right {
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 70%;
+}
+
+/* Fence posts */
+.fence::before,
+.fence::after {
+    content: '';
+    position: absolute;
+    background-color: #654321;
+}
+
+.fence-top::before,
+.fence-bottom::before {
+    width: 100%;
+    height: 5px;
+    top: -8px;
+}
+
+.fence-top::after,
+.fence-bottom::after {
+    width: 100%;
+    height: 5px;
+    bottom: -8px;
+}
+
+.fence-left::before,
+.fence-right::before {
+    width: 5px;
+    height: 100%;
+    left: -8px;
+}
+
+.fence-left::after,
+.fence-right::after {
+    width: 5px;
+    height: 100%;
+    right: -8px;
+}
+
+/* Make characters smaller on mobile devices */
+@media (max-width: 768px) {
+    #dog {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 30px solid #8B4513;
+    }
+
+    #sheep {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .fence {
+        border-width: 10px;
+    }
+} 
